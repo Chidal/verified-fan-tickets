@@ -1,38 +1,8 @@
-Here’s a clean, professional **README.md** version of your text, fully structured and formatted for your repo:
-
----
-
 # Verified Fan Tickets DApp 🎟️
 
-![Verified Fan Tickets DApp Logo](<!-- Replace with actual logo URL if uploaded -->)
-
-Welcome to the **Verified Fan Tickets DApp**, an innovative solution built for the **Moca Network Buildathon** (Wave 1, launched 10:06 PM WAT, October 1, 2025).
+Welcome to the **Verified Fan Tickets DApp**, an innovative solution built for the **Moca Network Buildathon** 
 
 This decentralized application (DApp) on **Moca Chain** prevents scalping and bot-driven ticket resales by gating purchases to verified fans using **zero-knowledge proofs (ZKPs)**. It leverages **Moca Network’s AIR Credential Services** for portable fan badges and cross-chain relaying, ensuring fair access and rewarding loyalty with exclusive perks.
-
-* **Repository:** [https://github.com/Chidal/verified-fan-tickets](https://github.com/Chidal/verified-fan-tickets)
-* **Buildathon Theme:** *“Build the future of identity on Moca Chain”*
-* **Current Date & Time:** 07:39 AM WAT, Thursday, October 02, 2025
-
----
-
-## 📑 Table of Contents
-
-* [What It Does](#what-it-does)
-* [Features](#features)
-* [The Problem It Solves](#the-problem-it-solves)
-* [Tech Stack](#tech-stack)
-* [Installation](#installation)
-* [Usage](#usage)
-* [How We Built It](#how-we-built-it)
-* [Challenges We Faced](#challenges-we-faced)
-* [What We Learned](#what-we-learned)
-* [What's Next](#whats-next)
-* [Contributing](#contributing)
-* [License](#license)
-* [Acknowledgments](#acknowledgments)
-
----
 
 ## 🚀 What It Does
 
@@ -126,7 +96,7 @@ Configure `hardhat.config.ts`:
 networks: {
   moca-testnet: {
     url: "https://rpc.mocachain-testnet.org",
-    accounts: ["YOUR_PRIVATE_KEY"],
+    accounts: ["PRIVATE_KEY"],
   },
 }
 ```
