@@ -1,6 +1,6 @@
 # Verified Fan Tickets DApp 🎟️
 
-Welcome to the **Verified Fan Tickets DApp**, an innovative solution built for the **Moca Network Buildathon** 
+Welcome to the **Verified Fan Tickets DApp**, an innovative solution built for the **Moca Network** 
 
 This decentralized application (DApp) on **Moca Chain** prevents scalping and bot-driven ticket resales by gating purchases to verified fans using **zero-knowledge proofs (ZKPs)**. It leverages **Moca Network’s AIR Credential Services** for portable fan badges and cross-chain relaying, ensuring fair access and rewarding loyalty with exclusive perks.
 
