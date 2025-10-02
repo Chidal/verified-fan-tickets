@@ -1,68 +1,198 @@
-Ahh, now it makes sense ✅ — if your button classes are not updating, it’s probably because:
-
-1. **Tailwind is purging unused classes** → custom or arbitrary colors like `bg-[#8B4513]` may not be included unless you whitelist them.
-2. **No default “brown” palette** → Tailwind doesn’t ship with a `brown` scale, so `bg-brown-500` won’t work unless you extend it in `tailwind.config.js`.
-
-Let’s fix it properly from your **Tailwind config**.
+Here’s a clean, professional **README.md** version of your text, fully structured and formatted for your repo:
 
 ---
 
-### 🔧 Step 1. Open `tailwind.config.js`
+# Verified Fan Tickets DApp 🎟️
 
-Add a custom `brown` color scale:
+![Verified Fan Tickets DApp Logo](<!-- Replace with actual logo URL if uploaded -->)
 
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        brown: {
-          50:  '#fdf8f6',
-          100: '#fceee3',
-          200: '#f7d4b8',
-          300: '#f1b98d',
-          400: '#e79652',
-          500: '#8B4513', // Saddle Brown
-          600: '#733a10',
-          700: '#5c2e0d',
-          800: '#45230a',
-          900: '#2e1707',
-        },
-      },
-    },
+Welcome to the **Verified Fan Tickets DApp**, an innovative solution built for the **Moca Network Buildathon** (Wave 1, launched 10:06 PM WAT, October 1, 2025).
+
+This decentralized application (DApp) on **Moca Chain** prevents scalping and bot-driven ticket resales by gating purchases to verified fans using **zero-knowledge proofs (ZKPs)**. It leverages **Moca Network’s AIR Credential Services** for portable fan badges and cross-chain relaying, ensuring fair access and rewarding loyalty with exclusive perks.
+
+* **Repository:** [https://github.com/Chidal/verified-fan-tickets](https://github.com/Chidal/verified-fan-tickets)
+* **Buildathon Theme:** *“Build the future of identity on Moca Chain”*
+* **Current Date & Time:** 07:39 AM WAT, Thursday, October 02, 2025
+
+---
+
+## 📑 Table of Contents
+
+* [What It Does](#what-it-does)
+* [Features](#features)
+* [The Problem It Solves](#the-problem-it-solves)
+* [Tech Stack](#tech-stack)
+* [Installation](#installation)
+* [Usage](#usage)
+* [How We Built It](#how-we-built-it)
+* [Challenges We Faced](#challenges-we-faced)
+* [What We Learned](#what-we-learned)
+* [What's Next](#whats-next)
+* [Contributing](#contributing)
+* [License](#license)
+* [Acknowledgments](#acknowledgments)
+
+---
+
+## 🚀 What It Does
+
+The **Verified Fan Tickets DApp** restricts ticket purchases to users with **Moca-verified fan credentials** (e.g., past attendance or merchandise ownership proofs).
+
+* Uses **ZKPs** to ensure privacy.
+* Issues **portable fan badges** via AIR Credential Services.
+* Supports **cross-chain verification** with Animoca Brands’ gaming partners.
+* Rewards loyal fans with **exclusive perks**, creating a fairer entertainment ecosystem.
+
+---
+
+## ✨ Features
+
+* **ZKP-Gated Purchases** → Verifies fan eligibility without revealing sensitive data.
+* **Soulbound NFTs** → Non-transferable tickets to prevent scalping.
+* **AIR Credential Badges** → Portable proofs of fandom across apps and chains.
+* **Cross-Chain Relaying** → Integration with Animoca’s 570+ portfolio companies.
+* **User-Friendly UI** → Built with Next.js + TailwindCSS.
+* **Testnet Deployable** → Runs on **Moca Chain testnet**.
+
+---
+
+## 🎯 The Problem It Solves
+
+Scalping and bots inflate ticket prices, excluding genuine fans and cutting artist/venue revenues. Centralized ticketing systems fail to verify fandom, while Web3 lacks robust identity layers.
+
+This DApp:
+
+* Uses **Moca’s privacy-preserving identity infrastructure**.
+* Ensures **fair access** to events.
+* Protects **revenue**.
+* Builds a **loyal, verified fan base** across entertainment + gaming ecosystems.
+
+---
+
+## 🛠 Tech Stack
+
+* **Frontend:** Next.js, TypeScript, TailwindCSS, Wagmi, viem
+* **Blockchain:** Solidity, Hardhat, Moca Chain (testnet)
+* **Identity:** `@moca-network/air-kit` (mocked, awaiting official SDK)
+* **Privacy:** zk-SNARKs (via circom/Semaphore, mocked)
+* **Storage:** IPFS (planned for token metadata)
+
+---
+
+## ⚡ Installation
+
+### Prerequisites
+
+* Node.js (v18+)
+* npm or yarn
+* MetaMask (or compatible wallet)
+* Moca Chain testnet RPC access
+
+### Steps
+
+#### Clone the Repository
+
+```bash
+git clone https://github.com/Chidal/verified-fan-tickets.git
+cd verified-fan-tickets
+```
+
+#### Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+#### Configure Environment
+
+Create `.env.local` in root:
+
+```env
+NEXT_PUBLIC_TICKET_CONTRACT_ADDRESS=0x...TICKET_CONTRACT_ADDRESS
+```
+
+Replace with deployed contract address.
+
+#### Backend Setup (Contracts)
+
+```bash
+cd contracts
+npm install --save-dev hardhat @nomiclabs/hardhat-ethers ethers
+```
+
+Configure `hardhat.config.ts`:
+
+```ts
+networks: {
+  moca-testnet: {
+    url: "https://rpc.mocachain-testnet.org",
+    accounts: ["YOUR_PRIVATE_KEY"],
   },
-  plugins: [],
-};
+}
 ```
+
+Compile & Deploy:
+
+```bash
+npx hardhat compile
+npx hardhat run scripts/deploy.ts --network moca-testnet
+```
+
+Update `.env.local` with deployed address.
 
 ---
 
-### 🔧 Step 2. Use it in your button
+## 🖥 Usage
 
-Now you can safely use Tailwind class names like this:
-
-```jsx
-<button
-  onClick={toggleProducts}
-  className="bg-brown-500 text-white py-2 px-6 rounded-full text-base font-medium hover:bg-brown-600 transition duration-300 shadow-lg hover:shadow-xl border border-brown-700"
->
-  Let's Start
-</button>
-```
-
----
-
-### 🔧 Step 3. Restart Tailwind build
-
-Run your dev server again so Tailwind picks up the new config:
+Run frontend:
 
 ```bash
 npm run dev
 ```
 
-(or `yarn dev` / `pnpm dev` depending on your setup).
+Open [http://localhost:3000](http://localhost:3000).
+
+* Connect wallet via **"Connect with AIR Account"**
+* Browse events, verify fan status (mock ZKP), and mint soulbound NFT ticket
+* View fan badges in profile
+
+💡 **Moca Testnet:** Configure wallet + request test $MOCA tokens from organizers.
 
 ---
 
-⚡ Question: Do you want me to make you a **brown gradient scale** in the config too (so you can keep your gradient style), or just stick with a **solid brown theme**?
+## 🏗 How We Built It
+
+* **Frontend:** Next.js + TailwindCSS, Wagmi for wallet integration
+* **Smart Contracts:** Solidity (VerifiedFanTickets.sol + FanCredentialVerifier.sol), deployed with Hardhat
+* **Identity:** Mocked AIR Kit SDK + ZKP verification
+* **Timeline:**
+
+  * Days 1-2 → Setup
+  * Days 3-5 → Core features
+  * Days 6-10 → Testing + polish
+
+---
+
+## 🧩 Challenges We Faced
+
+* SDK unavailable → Mocked AIR Kit
+* ZKP simulation without identity oracle
+* Enforcing soulbound NFT logic
+* Mocking cross-chain relaying for Animoca ecosystem
+
+---
+
+## 📚 What We Learned
+
+* Practical ZKP integration (circom + Semaphore basics)
+* Cross-chain relaying design patterns
+* Optimized Web3 UI/UX with Next.js + Wagmi
+* Hands-on with decentralized identity systems
+
+---
+
+## 🔮 What's Next
+
+* **Wave 2** → Gamified loyalty system ($MOCA rewards + Animoca integrations)
+* **Wave 3** → Artist/Venue dashboards for ticket control & analytics
+* **Long-Term** → Live event partnerships, ZKP optimization, VC support at Token 2049
