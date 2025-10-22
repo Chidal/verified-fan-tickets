@@ -49,7 +49,7 @@ export default function Explore() {
       <HeroSection />
       <header className="flex justify-between items-center mb-12 bg-gray-800 p-6 rounded-xl shadow-md">
         <h1 className="text-4xl font-bold text-glam-gold">Explore Events</h1>
-        <p className="text-moca-gray">Wallet connection disabled for now (mock mode)</p>
+        <p className="text-moca-gray">Wallet connection</p>
       </header>
       <div className="mb-8">
         <input

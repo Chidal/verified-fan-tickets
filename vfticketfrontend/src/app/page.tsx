@@ -27,7 +27,7 @@ export default function Home() {
       <HeroSection />
       <header className="flex justify-between items-center mb-12 bg-gray-800 p-6 rounded-xl shadow-md">
         <h1 className="text-4xl font-bold text-glam-gold">Verified Fan Tickets</h1>
-        <p className="text-moca-gray">Wallet connection disabled for now (mock mode)</p>
+        <p className="text-moca-gray">Wallet connection</p>
       </header>
       <EventFilter onFilter={handleFilter} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
