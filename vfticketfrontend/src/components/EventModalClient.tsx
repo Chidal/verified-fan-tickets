@@ -91,7 +91,7 @@ export default function EventModalClient({ event }: { event: Event }) {
             <video controls className="w-full h-32 bg-gray-700 mb-2">
               <source src="/mock-video.mp4" type="video/mp4" />
             </video>
-            <QRCode value={event.id} className="mb-2" />
+            <QRCodeSVG value={event.id} className="mb-2" />
             <VerticalTimeline>
               <div className="vertical-timeline-element">
                 <h3 className="text-moca-gray">10:00 AM - Doors Open</h3>
