@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Event } from '@/types';
 import Rating from 'react-rating';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 import VerticalTimeline from 'react-vertical-timeline';
 
 export default function EventModalClient({ event }: { event: Event }) {

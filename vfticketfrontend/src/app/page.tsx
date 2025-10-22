@@ -1,27 +1,41 @@
 "use client";
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+import EventCard from '@/components/EventCard';
+import HeroSection from '@/components/HeroSection';
+import Footer from '@/components/Footer';
+import EventFilter from '@/components/EventFilter';
+import { Event } from '@/types';
+import { useState } from 'react';
+
+// Mock event data
+const events: Event[] = [
+  { id: '1', name: 'Concert X', date: '2025-11-01', description: 'Epic show!', category: 'Music' },
+  { id: '2', name: 'Game Fest', date: '2025-12-05', description: 'Gaming event!', category: 'Gaming' },
+  { id: '3', name: 'VIP Gala', date: '2025-12-15', description: 'Exclusive event!', category: 'VIP' },
+];
 
 export default function Home() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    autoplay: true,
+  const [filteredEvents, setFilteredEvents] = useState(events);
+
+  const handleFilter = (category: string) => {
+    if (category === 'all') setFilteredEvents(events);
+    else setFilteredEvents(events.filter(event => event.category === category));
   };
-  const mockEvents = ['1', '2', '3']; // Mock data
 
   return (
-    <div className="w-full">
-      <Slider {...settings}>
-        {mockEvents.map((id) => (
-          <div key={id} className="p-4 bg-gray-200 dark:bg-gray-700 hover:scale-105 transition transform">
-            Event {id}
-          </div>
+    <div className="min-h-screen p-8">
+      <HeroSection />
+      <header className="flex justify-between items-center mb-12 bg-gray-800 p-6 rounded-xl shadow-md">
+        <h1 className="text-4xl font-bold text-glam-gold">Verified Fan Tickets</h1>
+        <p className="text-moca-gray">Wallet connection disabled for now (mock mode)</p>
+      </header>
+      <EventFilter onFilter={handleFilter} />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {filteredEvents.map((event) => (
+          <EventCard key={event.id} event={event} />
         ))}
-      </Slider>
+      </div>
+      <Footer />
     </div>
   );
 }

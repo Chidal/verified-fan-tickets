@@ -1,6 +1,8 @@
 "use client";
-import EventModalClient from '@/components/EventModalClient';
-import { useParams } from 'next/navigation';
+
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import EventModal from '@/components/EventModal';
 import { Event } from '@/types';
 
 // Mock event data
@@ -11,15 +13,22 @@ const events: Record<string, Event> = {
 };
 
 export default function EventDetails() {
-  const params = useParams();
-  const id = params?.id as string;
-  const event = events[id] || null;
+  const router = useRouter();
+  const { id } = router.query;
+  const event = events[id as string];
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!event) return <div className="p-8 text-red-400">Event not found</div>;
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
-      <EventModalClient event={event} />
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="btn btn-primary mb-6"
+      >
+        View Event Details
+      </button>
+      <EventModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} event={event} />
       <p className="text-moca-gray italic font-medium">Ticket purchase disabled for now (mock mode)</p>
     </div>
   );
