@@ -1,16 +1,21 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { Event } from '@/types';
-import Rating from 'react-rating';
 import { QRCodeSVG } from 'qrcode.react';
-import VerticalTimeline from 'react-vertical-timeline';
+
+// Use Material-UI Rating instead of react-rating for better TypeScript support
+import Rating from '@mui/material/Rating';
+
+// Use react-vertical-timeline-component instead of react-vertical-timeline
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 
 export default function EventModalClient({ event }: { event: Event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [countdown, setCountdown] = useState('');
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState<number | null>(0); // Adjusted for MUI Rating
   const [reviews] = useState(['Great event!', 'Awesome!']);
   const [isFavorite, setIsFavorite] = useState(false);
   const [email, setEmail] = useState('');
@@ -81,21 +86,23 @@ export default function EventModalClient({ event }: { event: Event }) {
               className="w-full p-2 border rounded mb-2"
             />
             <Rating
-              onChange={setRating}
-              initialRating={rating}
+              value={rating}
+              onChange={(e, value) => setRating(value)}
               className="mb-2"
             />
             <ul className="mb-2">
-              {reviews.map((r, i) => <li key={i} className="text-sm">{r}</li>)}
+              {reviews.map((r, i) => (
+                <li key={i} className="text-sm">{r}</li>
+              ))}
             </ul>
             <video controls className="w-full h-32 bg-gray-700 mb-2">
               <source src="/mock-video.mp4" type="video/mp4" />
             </video>
-            <QRCodeSVG value={event.id} className="mb-2" />
+            {event.id && <QRCodeSVG value={event.id} className="mb-2" />}
             <VerticalTimeline>
-              <div className="vertical-timeline-element">
+              <VerticalTimelineElement>
                 <h3 className="text-moca-gray">10:00 AM - Doors Open</h3>
-              </div>
+              </VerticalTimelineElement>
             </VerticalTimeline>
             <a href="https://mock-stream.com" className="text-blue-500 underline mb-2 block">
               Watch Live
